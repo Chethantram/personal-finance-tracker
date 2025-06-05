@@ -14,7 +14,7 @@ const AccountIdPage = async ({ params }) => {
   }
   const { transactions, ...account } = accountData;
   return (
-    <div className="p-7">
+    <div className="p-7 space-y-5">
       <div className="flex items-center justify-between">
         <div>
           <h1 className="text-violet-500 fon
