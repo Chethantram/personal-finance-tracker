@@ -21,7 +21,7 @@ const AddTransaction = async ({ searchParams }) => {
       <div className="space-y-6">
         <h1
           className="text-violet-500 fon
-          t-bold text-5xl"
+          t-bold text-5xl md:mx-0 mx-3"
         >
           {editId ? "Update" : "Add"} Transaction
         </h1>
