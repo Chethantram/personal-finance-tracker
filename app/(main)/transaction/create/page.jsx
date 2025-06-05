@@ -25,7 +25,7 @@ const AddTransaction = async ({ searchParams }) => {
         >
           {editId ? "Update" : "Add"} Transaction
         </h1>
-        <div>
+        <div className="md:mx-0 mx-3">
           <AddTransactionForm
             editMode={!!editId}
             initialData={initialData}
