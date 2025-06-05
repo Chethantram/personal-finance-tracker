@@ -12,108 +12,117 @@ import Link from "next/link";
 
 export default function Home() {
   return (
-    <div className="mt-40 w-full">
+    <div className="min-h-screen bg-white">
+      {/* Hero Section */}
       <HeroSection />
-      <section>
-        <div className="flex flex-col items-center justify-center py-10 bg-gray-100 mt-40">
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 p-4">
-            {statsData.map((item, index) => (
-              <div
-                key={index}
-                className="flex flex-col items-center justify-between p-4"
-              >
-                <h2 className="text-3xl font-bold text-gray-800">
-                  {item.value}
-                </h2>
-                <p className="text-lg text-gray-600">{item.label}</p>
+
+      {/* Stats Section */}
+      <section className="py-20 bg-blue-50">
+        <div className="container mx-auto px-4">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
+            {statsData.map((stat, index) => (
+              <div key={index} className="text-center">
+                <div className="text-4xl font-bold text-blue-600 mb-2">
+                  {stat.value}
+                </div>
+                <div className="text-gray-600">{stat.label}</div>
               </div>
             ))}
-          </div>
-          <div className="md:mt-32 mt-16">
-            <h1 className="text-center text-3xl font-bold">
-              EveryThing you need to manage
-            </h1>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 p-6">
-              {featuresData.map((item, index) => (
-                <Card key={index}>
-                  <CardContent className="flex items-center justify-center gap-4 p-4">
-                    <div className="text-blue-600 mx-auto">{item.icon}</div>
-                    <div>
-                      <h3 className="text-xl font-semibold text-gray-800">
-                        {item.title}
-                      </h3>
-                      <p className="text-gray-600">{item.description}</p>
-                    </div>
-                  </CardContent>
-                </Card>
-              ))}
-            </div>
           </div>
         </div>
       </section>
 
-      <section>
-        <div className="md:mt-32 mt-16 bg-blue-50 py-20">
-          <h1 className="text-center text-3xl font-bold ">How It Works</h1>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 p-6">
-            {howItWorksData.map((item, index) => (
-              <Card key={index}>
-                <CardContent className="flex flex-col items-center justify-center gap-4 p-4">
-                  <div className="text-blue-600 mx-auto">{item.icon}</div>
-                  <div className="text-center">
-                    <h3 className="text-xl font-semibold text-gray-800">
-                      {item.title}
-                    </h3>
-                    <p className="text-gray-600">{item.description}</p>
-                  </div>
+      {/* Features Section */}
+      <section id="features" className="py-20">
+        <div className="container mx-auto px-4">
+          <h2 className="text-3xl font-bold text-center mb-12">
+            Everything you need to manage your finances
+          </h2>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {featuresData.map((feature, index) => (
+              <Card className="p-6" key={index}>
+                <CardContent className="space-y-4 pt-4">
+                  {feature.icon}
+                  <h3 className="text-xl font-semibold">{feature.title}</h3>
+                  <p className="text-gray-600">{feature.description}</p>
                 </CardContent>
               </Card>
             ))}
           </div>
         </div>
       </section>
-      <section>
-        <div className="md:mt-32 mt-16 bg-blue-50 py-20">
-          <h1 className="text-center text-3xl font-bold ">
-            What our User says
-          </h1>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 p-6">
-            {testimonialsData.map((item, index) => (
-              <Card key={index}>
-                <CardContent className="flex flex-col  gap-4 p-4">
-                  <div className="flex gap-5 items-center">
+
+      {/* How It Works Section */}
+      <section className="py-20 bg-blue-50">
+        <div className="container mx-auto px-4">
+          <h2 className="text-3xl font-bold text-center mb-16">How It Works</h2>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
+            {howItWorksData.map((step, index) => (
+              <div key={index} className="text-center">
+                <div className="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-6">
+                  {step.icon}
+                </div>
+                <h3 className="text-xl font-semibold mb-4">{step.title}</h3>
+                <p className="text-gray-600">{step.description}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Testimonials Section */}
+      <section id="testimonials" className="py-20">
+        <div className="container mx-auto px-4">
+          <h2 className="text-3xl font-bold text-center mb-16">
+            What Our Users Say
+          </h2>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            {testimonialsData.map((testimonial, index) => (
+              <Card key={index} className="p-6">
+                <CardContent className="pt-4">
+                  <div className="flex items-center mb-4">
                     <Image
-                      className="rounded-full"
-                      src={`person${index+1}.jpeg` ||item.image }
-                      alt={item.name}
+                      src={`person${index+1}.jpeg`||testimonial.image}
+                      alt={testimonial.name}
                       width={40}
                       height={40}
+                      className="rounded-full"
                     />
-                    <div className=" flex flex-col  mt-2">
-                      <h1>{item.name}</h1>
-                      <h1>{item.role}</h1>
+                    <div className="ml-4">
+                      <div className="font-semibold">{testimonial.name}</div>
+                      <div className="text-sm text-gray-600">
+                        {testimonial.role}
+                      </div>
                     </div>
                   </div>
-                  <div><p>{item.quote}</p></div>
+                  <p className="text-gray-600">{testimonial.quote}</p>
                 </CardContent>
               </Card>
             ))}
           </div>
         </div>
       </section>
-      <section>
-        <div className=" mt-16 bg-blue-600 py-20 text-center text-white ">
-          <h1 className="text-center text-3xl font-bold  ">
-           Ready to take control of your finances?
-          </h1>
-          <p>Thousand of user already managing the finance</p>
-          
-        <div>
-         <Link href={'/dashboard'}><Button className={'text-blue-500 mt-5 animate-bounce'} variant={'outline'}>Get free Trial</Button></Link> 
-        </div>
+
+      {/* CTA Section */}
+      <section className="py-20 bg-blue-600">
+        <div className="container mx-auto px-4 text-center">
+          <h2 className="text-3xl font-bold text-white mb-4">
+            Ready to Take Control of Your Finances?
+          </h2>
+          <p className="text-blue-100 mb-8 max-w-2xl mx-auto">
+            Join thousands of users who are already managing their finances
+            smarter with Welth
+          </p>
+          <Link href="/dashboard">
+            <Button
+              size="lg"
+              className="bg-white text-blue-600 hover:bg-blue-50 animate-bounce"
+            >
+              Start Free Trial
+            </Button>
+          </Link>
         </div>
       </section>
-      
     </div>
   );
 }
