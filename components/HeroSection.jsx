@@ -1,5 +1,6 @@
 'use client';
 import React, { useRef,useEffect } from "react";
+import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import Image from "next/image";
 const HeroSection = () => {
@@ -33,7 +34,7 @@ const HeroSection = () => {
           your expenses, set budgets, and achieve your financial goals.
         </p>
         <div className="flex justify-center gap-5 mt-8">
-          <Button className={"text-md rounded-sm"}>Get Started</Button>
+         <Link href="/dashboard"> <Button className={"text-md rounded-sm"}>Get Started</Button></Link>
           <Button className={"text-md rounded-md"} variant="outline">
             Learn More
           </Button>
