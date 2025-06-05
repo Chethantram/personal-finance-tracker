@@ -84,7 +84,7 @@ export default function Home() {
                   <div className="flex gap-5 items-center">
                     <Image
                       className="rounded-full"
-                      src={item.image}
+                      src={`person${index+1}.jpeg` ||item.image }
                       alt={item.name}
                       width={40}
                       height={40}
