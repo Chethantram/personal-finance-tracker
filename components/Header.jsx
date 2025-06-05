@@ -8,45 +8,51 @@ import { checkUser } from "@/lib/checkUser";
 const Header = async () => {
   await checkUser();
   return (
-    <div className="flex fixed top-0 z-10 w-full justify-between items-center py-4 px-14 bg-gray-100 border-b-2 border-black/40">
-      <Link href={"/"}>
+    <header className="fixed top-0 w-full bg-white/80 backdrop-blur-md z-50 border-b">
+      <nav className="container mx-auto px-4 py-4 flex items-center justify-between">
+        <Link href={"/"}>
         <h1 className="text-2xl font-bold uppercase hover:underline transition-all duration-300">
           Spend
           <span className=" text-indigo-600 hover:text-indigo-700">IQ</span>
         </h1>
       </Link>
-      <div>
-        <SignedOut>
-          <SignInButton forceRedirectUrl="/dashboard">
-            <Button variant={"outline"}>Login</Button>
-          </SignInButton>
-        </SignedOut>
-        <div className="flex items-center gap-3">
+
+        {/* Action Buttons */}
+        <div className="flex items-center space-x-4">
           <SignedIn>
-            <Link href={"/dashboard"}>
-              <Button className="flex items-center gap-2" variant={"outline"}>
-                <LayoutDashboard size={14} />
-                <h4>Dashboard</h4>
+            <Link
+              href="/dashboard"
+              className="text-gray-600 hover:text-blue-600 flex items-center gap-2"
+            >
+              <Button variant="outline">
+                <LayoutDashboard size={18} />
+                <span className="hidden md:inline">Dashboard</span>
               </Button>
             </Link>
-            <Link href={"/transaction/create"}>
+            <a href="/transaction/create">
               <Button className="flex items-center gap-2">
-                <PenBox size={14} />
-                <h4>Transaction</h4>
+                <PenBox size={18} />
+                <span className="hidden md:inline">Add Transaction</span>
               </Button>
-            </Link>
+            </a>
+          </SignedIn>
+          <SignedOut>
+            <SignInButton forceRedirectUrl="/dashboard">
+              <Button variant="outline">Login</Button>
+            </SignInButton>
+          </SignedOut>
+          <SignedIn>
             <UserButton
               appearance={{
                 elements: {
-                  avatarBox: "h-10 w-10",
-                  userButtonAvatarBox: "h-10 w-10",
+                  avatarBox: "w-10 h-10",
                 },
               }}
             />
           </SignedIn>
         </div>
-      </div>
-    </div>
+      </nav>
+    </header>
   );
 };
 
