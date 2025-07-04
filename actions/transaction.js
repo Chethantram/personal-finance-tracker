@@ -84,7 +84,7 @@ export const createTransaction = async (data) => {
       await tx.account.update({
         where: { id: account.id },
         data: {
-          balance: newBalance,
+          balance:{increment: newBalance},
         },
       });
       return updated;
