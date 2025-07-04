@@ -87,7 +87,6 @@ const AddTransactionForm = ({
 
   const onSubmitHandler = async (data) => {
     const formData = { ...data, amount: parseFloat(data.amount) };
-    fetchData(formData);
 
      if (editMode) {
       fetchData(editId, formData);
